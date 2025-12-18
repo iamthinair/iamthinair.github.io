@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>air</title>
     <link rel="icon" type="image/png" href="/dev99_32.png">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
 <style>
@@ -50,6 +50,29 @@
   document.querySelectorAll('.close-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.closest('.window').style.display = 'none';
+    });
+  });
+</script>
+<script>
+  document.querySelectorAll('.window').forEach(win => {
+    const bar = win.querySelector('.title-bar');
+    let isDown = false, offsetX = 0, offsetY = 0;
+
+    bar.addEventListener('mousedown', e => {
+      isDown = true;
+      offsetX = e.clientX - win.offsetLeft;
+      offsetY = e.clientY - win.offsetTop;
+      win.style.zIndex = Date.now();
+    });
+
+    document.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      win.style.left = (e.clientX - offsetX) + 'px';
+      win.style.top = (e.clientY - offsetY) + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDown = false;
     });
   });
 </script>
