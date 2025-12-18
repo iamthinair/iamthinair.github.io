@@ -5,15 +5,24 @@
     <title>Test</title>
     <link rel="icon" type="image/png" href="/dev99_32.png">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
+<style>
+  body {
+    background: #008080;
+  }
+
+    .window {
+    position: absolute;
+  }
+</style>
   </head>
 
   <body>
-    <div class="window" style="width: 300px;">
+    <div class="window" style="width:300px; top:40px; left:40px;">
       <div class="title-bar">
         <div class="title-bar-text">Hello!</div>
         <div class="title-bar-controls">
           <button aria-label="Help"></button>
-          <button aria-label="Close"></button>
+          <button aria-label="Close" class="close-btn"></button>
         </div>
        </div>
       <div class="window-body">
@@ -22,13 +31,13 @@
          <img src="/clippyani6.gif">
       </div>
     </div>
-   <div>
-    <div class="window" style="width: 300px;">
+    
+    <div class="window" style="width:300px; top:220px; left:120px;">
       <div class="title-bar">
         <div class="title-bar-text">98.css</div>
         <div class="title-bar-controls">
           <button aria-label="Help"></button>
-          <button aria-label="Close"></button>
+          <button aria-label="Close" class="close-btn"></button>
         </div>
        </div>
       <div class="window-body">
@@ -36,4 +45,13 @@
         <p><strong>It's very cool!</strong></p>
       </div>
     </div>
+
+<script>
+  document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.window').style.display = 'none';
+    });
+  });
+</script>
+  </body>
 </html>
